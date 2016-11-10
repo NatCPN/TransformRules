@@ -1,0 +1,474 @@
+module pgTestCase
+
+imports
+
+	include/VMDFRS
+	src-gen/signatures/VMDFRS-sig
+	trans/generate
+	trans/cpnDeclarations
+	trans/pgGenerator
+	trans/pgNoAttReq
+	
+rules // Create the page TestCase
+	
+  page-testcase: 
+  	Dfrs(vi*, vo*, ti*, g, f) -> 
+  	  $[	
+    <page id="ID8">
+      <pageattr name="TestCase"/>
+      <place id="ID1415178020">
+        <posattr x="42.000000"
+                 y="15.000000"/>
+        <fillattr colour="White"
+                  pattern=""
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="1"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <text>Next
+Input</text>
+        <ellipse w="112.000000"
+                 h="102.000000"/>
+        <token x="-10.000000"
+               y="0.000000"/>
+        <marking x="0.000000"
+                 y="0.000000"
+                 hidden="false">
+          <snap snap_id="0"
+                anchor.horizontal="0"
+                anchor.vertical="0"/>
+        </marking>
+        <type id="ID1415178021">
+          <posattr x="119.000000"
+                   y="-39.000000"/>
+          <fillattr colour="White"
+                    pattern="Solid"
+                    filled="false"/>
+          <lineattr colour="Black"
+                    thick="0"
+                    type="Solid"/>
+          <textattr colour="Black"
+                    bold="false"/>
+          <text tool="CPN Tools"
+                version="4.0.0">INPUTCOUNTER</text>
+        </type>
+        <initmark id="ID1415178022">
+          <posattr x="96.000000"
+                   y="60.000000"/>
+          <fillattr colour="White"
+                    pattern="Solid"
+                    filled="false"/>
+          <lineattr colour="Black"
+                    thick="0"
+                    type="Solid"/>
+          <textattr colour="Black"
+                    bold="false"/>
+          <text tool="CPN Tools"
+                version="4.0.0">1`0</text>
+        </initmark>
+        <fusioninfo id="ID1415505334"
+                    name="NextInput">
+          <posattr x="0.000000"
+                   y="-23.000000"/>
+          <fillattr colour="White"
+                    pattern="Solid"
+                    filled="false"/>
+          <lineattr colour="Black"
+                    thick="0"
+                    type="Solid"/>
+          <textattr colour="Black"
+                    bold="false"/>
+        </fusioninfo>
+      </place>
+      <place id="ID1415178029">
+        <posattr x="42.000000"
+                 y="378.000000"/>
+        <fillattr colour="White"
+                  pattern=""
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="1"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <text>Test
+Oracles</text>
+        <ellipse w="98.000000"
+                 h="96.000000"/>
+        <token x="-10.000000"
+               y="0.000000"/>
+        <marking x="16.000000"
+                 y="31.000000"
+                 hidden="false">
+          <snap snap_id="0"
+                anchor.horizontal="1"
+                anchor.vertical="3"/>
+        </marking>
+        <type id="ID1415178030">
+          <posattr x="87.500000"
+                   y="334.000000"/>
+          <fillattr colour="White"
+                    pattern="Solid"
+                    filled="false"/>
+          <lineattr colour="Black"
+                    thick="0"
+                    type="Solid"/>
+          <textattr colour="Black"
+                    bold="false"/>
+          <text tool="CPN Tools"
+                version="4.0.0">TO</text>
+        </type>
+        <initmark id="ID1415178031">
+          <posattr x="59.000000"
+                   y="455.000000"/>
+          <fillattr colour="White"
+                    pattern="Solid"
+                    filled="false"/>
+          <lineattr colour="Black"
+                    thick="0"
+                    type="Solid"/>
+          <textattr colour="Black"
+                    bold="false"/>
+          <text tool="CPN Tools"
+                version="4.0.0">
+(InputQty+2, ModelTime.fromInt(9999)
+[pim'*],
+&quot;STOP&quot;)</text>
+        </initmark>
+        <fusioninfo id="ID1415541967"
+                    name="Tests">
+          <posattr x="18.000000"
+                   y="334.000000"/>
+          <fillattr colour="White"
+                    pattern="Solid"
+                    filled="false"/>
+          <lineattr colour="Black"
+                    thick="0"
+                    type="Solid"/>
+          <textattr colour="Black"
+                    bold="false"/>
+        </fusioninfo>
+      </place>
+      <place id="ID1415555724">
+        <posattr x="321.000000"
+                 y="278.000000"/>
+        <fillattr colour="White"
+                  pattern=""
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="1"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <text>Next
+Output</text>
+        <ellipse w="84.000000"
+                 h="82.000000"/>
+        <token x="-10.000000"
+               y="0.000000"/>
+        <marking x="0.000000"
+                 y="0.000000"
+                 hidden="false">
+          <snap snap_id="0"
+                anchor.horizontal="0"
+                anchor.vertical="0"/>
+        </marking>
+        <type id="ID1415555725">
+          <posattr x="331.500000"
+                   y="226.000000"/>
+          <fillattr colour="White"
+                    pattern="Solid"
+                    filled="false"/>
+          <lineattr colour="Black"
+                    thick="0"
+                    type="Solid"/>
+          <textattr colour="Black"
+                    bold="false"/>
+          <text tool="CPN Tools"
+                version="4.0.0">INT</text>
+        </type>
+        <initmark id="ID1415555726">
+          <posattr x="365.000000"
+                   y="316.000000"/>
+          <fillattr colour="White"
+                    pattern="Solid"
+                    filled="false"/>
+          <lineattr colour="Black"
+                    thick="0"
+                    type="Solid"/>
+          <textattr colour="Black"
+                    bold="false"/>
+          <text tool="CPN Tools"
+                version="4.0.0">1`1</text>
+        </initmark>
+      </place>
+      <trans id="ID1415178008"
+             explicit="false">
+        <posattr x="42.000000"
+                 y="210.000000"/>
+        <fillattr colour="White"
+                  pattern=""
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="1"
+                  type="solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <text>Write
+File</text>
+        <box w="60.000000"
+             h="40.000000"/>
+        <binding x="7.200000"
+                 y="-3.000000"/>
+        <cond id="ID1415178009">
+          <posattr x="-10.500000"
+                   y="240.000000"/>
+          <fillattr colour="White"
+                    pattern="Solid"
+                    filled="false"/>
+          <lineattr colour="Black"
+                    thick="0"
+                    type="Solid"/>
+          <textattr colour="Black"
+                    bold="false"/>
+          <text tool="CPN Tools"
+                version="4.0.0">(i=InputQty),
+(z=n)</text>
+        </cond>
+        <time id="ID1415178010">
+          <posattr x="86.500000"
+                   y="241.000000"/>
+          <fillattr colour="White"
+                    pattern="Solid"
+                    filled="false"/>
+          <lineattr colour="Black"
+                    thick="0"
+                    type="Solid"/>
+          <textattr colour="Black"
+                    bold="false"/>
+          <text tool="CPN Tools"
+                version="4.0.0"/>
+        </time>
+        <code id="ID1415178011">
+          <posattr x="335.000000"
+                   y="75.000000"/>
+          <fillattr colour="White"
+                    pattern="Solid"
+                    filled="false"/>
+          <lineattr colour="Black"
+                    thick="0"
+                    type="Solid"/>
+          <textattr colour="Black"
+                    bold="false"/>
+          <text tool="CPN Tools"
+                version="4.0.0">
+input (i,rt,[vi3'*][vo'*] req);
+action
+   if rt=[zero] then (outfile := TextIO.openOut(OS.Path.concat 
+                     (Output.getSimOutputDir(), "TC.csv")) ;
+                  TextIO.output(!outfile,Head) )    else ();
+   if rt&gt;=[zero] then
+                   if req&lt;&gt; &quot;STOP&quot; then
+                             TextIO.output(!outfile, 
+                             vector (rt,[vi3'*][vo'*] req)  )  
+                  else ( TextIO.closeOut(!outfile) )   else ();
+          </text>
+        </code>
+        <priority id="ID1415178013">
+          <posattr x="-26.000000"
+                   y="179.000000"/>
+          <fillattr colour="White"
+                    pattern="Solid"
+                    filled="false"/>
+          <lineattr colour="Black"
+                    thick="0"
+                    type="Solid"/>
+          <textattr colour="Black"
+                    bold="false"/>
+          <text tool="CPN Tools"
+                version="4.0.0"/>
+        </priority>
+      </trans>
+      <arc id="ID1415178101"
+           orientation="PtoT"
+           order="1">
+        <posattr x="0.000000"
+                 y="0.000000"/>
+        <fillattr colour="White"
+                  pattern=""
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="1"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <arrowattr headsize="1.200000"
+                   currentcyckle="2"/>
+        <transend idref="ID1415178008"/>
+        <placeend idref="ID1415178029"/>
+        <annot id="ID1415178102">
+          <posattr x="260.000000"
+                   y="370.000000"/>
+          <fillattr colour="White"
+                    pattern="Solid"
+                    filled="false"/>
+          <lineattr colour="Black"
+                    thick="0"
+                    type="Solid"/>
+          <textattr colour="Black"
+                    bold="false"/>
+          <text tool="CPN Tools"
+                version="4.0.0">
+(z,rt[vi2'*],
+[vo'*] req)</text>
+        </annot>
+      </arc>
+      <arc id="ID1415178103"
+           orientation="BOTHDIR"
+           order="1">
+        <posattr x="0.000000"
+                 y="0.000000"/>
+        <fillattr colour="White"
+                  pattern=""
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="1"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <arrowattr headsize="1.200000"
+                   currentcyckle="2"/>
+        <transend idref="ID1415178008"/>
+        <placeend idref="ID1415178020"/>
+        <annot id="ID1415178104">
+          <posattr x="36.500000"
+                   y="122.000000"/>
+          <fillattr colour="White"
+                    pattern="Solid"
+                    filled="false"/>
+          <lineattr colour="Black"
+                    thick="0"
+                    type="Solid"/>
+          <textattr colour="Black"
+                    bold="false"/>
+          <text tool="CPN Tools"
+                version="4.0.0">i</text>
+        </annot>
+      </arc>
+      <arc id="ID1415557387"
+           orientation="PtoT"
+           order="2">
+        <posattr x="0.000000"
+                 y="0.000000"/>
+        <fillattr colour="White"
+                  pattern=""
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="1"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <arrowattr headsize="1.200000"
+                   currentcyckle="2"/>
+        <transend idref="ID1415178008"/>
+        <placeend idref="ID1415555724"/>
+        <annot id="ID1415557388">
+          <posattr x="181.000000"
+                   y="263.000000"/>
+          <fillattr colour="White"
+                    pattern="Solid"
+                    filled="false"/>
+          <lineattr colour="Black"
+                    thick="0"
+                    type="Solid"/>
+          <textattr colour="Black"
+                    bold="false"/>
+          <text tool="CPN Tools"
+                version="4.0.0">n</text>
+        </annot>
+      </arc>
+      <arc id="ID1415557897"
+           orientation="TtoP"
+           order="1">
+        <posattr x="0.000000"
+                 y="0.000000"/>
+        <fillattr colour="White"
+                  pattern=""
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="1"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <arrowattr headsize="1.200000"
+                   currentcyckle="2"/>
+        <transend idref="ID1415178008"/>
+        <placeend idref="ID1415555724"/>
+        <annot id="ID1415557898">
+          <posattr x="206.500000"
+                   y="229.000000"/>
+          <fillattr colour="White"
+                    pattern="Solid"
+                    filled="false"/>
+          <lineattr colour="Black"
+                    thick="0"
+                    type="Solid"/>
+          <textattr colour="Black"
+                    bold="false"/>
+          <text tool="CPN Tools"
+                version="4.0.0">n+1</text>
+        </annot>
+      </arc>
+      <constraints/>
+    </page>]
+    with
+		pim'* := <concat> [<map(to-marking)> vi*, <map(to-marking)> vo*];
+		vi2'* := <map(arc-input-req)> vi*;
+		vi3'* := <map(actual-input)> vi*;
+		vo'* := <map(actual-output)> vo*;
+		voname := <map(output-colset)> vo*;
+		if (<length> ti*) then zero := "0"
+			else zero := <map(zero-tistamp)> ti*
+			end
+
+  zero-tistamp: 
+  	Timer(TimerDef(VarName(vn),vt,it)) -> cs
+		where
+			switch !vt
+				case !vt => Integer() :
+  			      cs := $[0]
+				otherwise :
+  			      cs := $[0.0]
+  			end
+
+  output-colset: 
+  	OUTVar(VarDef(VarName(vn), vt, ev*, iv)) ->
+  	  $[ OCS[vn] ]
+ 				
+  actual-input: 
+  	INVar(VarDef(VarName(vn), vt, ev*, iv)) ->
+  	  $[[vn'] ]
+  	with 
+  		vn' := <concat-strings> [vn, ", ", "\n"]
+  				
+  actual-output: 
+  	OUTVar(VarDef(VarName(vn), vt, ev*, iv)) ->
+  	  $[ [vn'] ]
+  	with 
+  		vn' := <concat-strings> [vn, ", ", "\n"]
+  				
+  to-marking: 
+  	INVar(VarDef(vn, vt, ev*, InitialValue(iv))) -> 
+  		$[[im]]
+  	  with 
+  		iv' := <regra1> iv; // <int-to-string> iv;
+  		im := <concat-strings> [", ", iv']
+
+  to-marking: 
+  	OUTVar(VarDef(vn, vt, ev*, InitialValue(iv))) -> 
+  		$[[im]]
+  	  with 
+  		iv' := <regra1> iv; // <int-to-string> iv;
+  		im := <concat-strings> [", ", iv']

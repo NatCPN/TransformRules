@@ -1,0 +1,420 @@
+module pgGenerator
+
+imports
+
+	include/VMDFRS
+	src-gen/signatures/VMDFRS-sig
+	trans/generate
+	trans/cpnDeclarations
+
+rules // Create the page Generator
+	
+  page-generator: 
+  	Dfrs(vi*, vo*, ti*, g, f*) -> 
+  	  $[	
+    <page id="ID6">
+      <pageattr name="Generator"/>
+      <place id="ID1415334672">
+        <posattr x="246.000000"
+                 y="70.000000"/>
+        <fillattr colour="White"
+                  pattern=""
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="1"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <text>Next
+Input</text>
+        <ellipse w="70.000000"
+                 h="50.000000"/>
+        <token x="-10.000000"
+               y="0.000000"/>
+        <marking x="0.000000"
+                 y="0.000000"
+                 hidden="false">
+          <snap snap_id="0"
+                anchor.horizontal="0"
+                anchor.vertical="0"/>
+        </marking>
+        <type id="ID1415334673">
+          <posattr x="204.000000"
+                   y="34.000000"/>
+          <fillattr colour="White"
+                    pattern="Solid"
+                    filled="false"/>
+          <lineattr colour="Black"
+                    thick="0"
+                    type="Solid"/>
+          <textattr colour="Black"
+                    bold="false"/>
+          <text tool="CPN Tools"
+                version="4.0.0">INPUTCOUNTER</text>
+        </type>
+        <initmark id="ID1415334674">
+          <posattr x="200.000000"
+                   y="93.000000"/>
+          <fillattr colour="White"
+                    pattern="Solid"
+                    filled="false"/>
+          <lineattr colour="Black"
+                    thick="0"
+                    type="Solid"/>
+          <textattr colour="Black"
+                    bold="false"/>
+          <text tool="CPN Tools"
+                version="4.0.0">1`0</text>
+        </initmark>
+        <fusioninfo id="IDnextf"
+                    name="NextInput">
+          <posattr x="218.000000"
+                   y="49.000000"/>
+          <fillattr colour="White"
+                    pattern="Solid"
+                    filled="false"/>
+          <lineattr colour="Black"
+                    thick="0"
+                    type="Solid"/>
+          <textattr colour="Black"
+                    bold="false"/>
+        </fusioninfo>
+      </place>
+      <place id="IDGenInput">
+        <posattr x="-59.000000"
+                 y="-200.000000"/>
+        <fillattr colour="White"
+                  pattern=""
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="1"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <text>Input</text>
+        <ellipse w="82.000000"
+                 h="66.000000"/>
+        <token x="-10.000000"
+               y="0.000000"/>
+        <marking x="10.000000"
+                 y="-1.000000"
+                 hidden="false">
+          <snap snap_id="0"
+                anchor.horizontal="1"
+                anchor.vertical="3"/>
+        </marking>
+        <type id="ID1415056801">
+          <posattr x="-70.000000"
+                   y="-249.000000"/>
+          <fillattr colour="White"
+                    pattern="Solid"
+                    filled="false"/>
+          <lineattr colour="Black"
+                    thick="0"
+                    type="Solid"/>
+          <textattr colour="Black"
+                    bold="false"/>
+          <text tool="CPN Tools"
+                version="4.0.0">INPUTLIM</text>
+        </type>
+        <initmark id="ID1415056802">
+          <posattr x="100.000000"
+                   y="-160.000000"/>
+          <fillattr colour="White"
+                    pattern="Solid"
+                    filled="false"/>
+          <lineattr colour="Black"
+                    thick="0"
+                    type="Solid"/>
+          <textattr colour="Black"
+                    bold="false"/>
+          <text tool="CPN Tools"
+                version="4.0.0">( 0[vi1'*])</text>
+        </initmark>
+        <fusioninfo id="ID1415390976"
+                    name="Inputs">
+          <posattr x="-95.000000"
+                   y="-220.000000"/>
+          <fillattr colour="White"
+                    pattern="Solid"
+                    filled="false"/>
+          <lineattr colour="Black"
+                    thick="0"
+                    type="Solid"/>
+          <textattr colour="Black"
+                    bold="false"/>
+        </fusioninfo>
+      </place>
+      <trans id="ID1415056788"
+             explicit="false">
+        <posattr x="-59.000000"
+                 y="70.000000"/>
+        <fillattr colour="White"
+                  pattern=""
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="1"
+                  type="solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <text>Generate
+Inputs</text>
+        <box w="80.000000"
+             h="60.000000"/>
+        <binding x="7.200000"
+                 y="-3.000000"/>
+        <cond id="ID1415056789">
+          <posattr x="-70.000000"
+                   y="116.000000"/>
+          <fillattr colour="White"
+                    pattern="Solid"
+                    filled="false"/>
+          <lineattr colour="Black"
+                    thick="0"
+                    type="Solid"/>
+          <textattr colour="Black"
+                    bold="false"/>
+          <text tool="CPN Tools"
+                version="4.0.0">  n=i, i&lt;InputQty</text>
+        </cond>
+        <time id="ID1415056790">
+          <posattr x="4.500000"
+                   y="385.000000"/>
+          <fillattr colour="White"
+                    pattern="Solid"
+                    filled="false"/>
+          <lineattr colour="Black"
+                    thick="0"
+                    type="Solid"/>
+          <textattr colour="Black"
+                    bold="false"/>
+          <text tool="CPN Tools"
+                version="4.0.0"/>
+        </time>
+        <code id="ID1415056791">
+          <posattr x="24.500000"
+                   y="266.000000"/>
+          <fillattr colour="White"
+                    pattern="Solid"
+                    filled="false"/>
+          <lineattr colour="Black"
+                    thick="0"
+                    type="Solid"/>
+          <textattr colour="Black"
+                    bold="false"/>
+          <text tool="CPN Tools"
+                version="4.0.0"/>
+        </code>
+        <priority id="ID1415056793">
+          <posattr x="-116.000000"
+                   y="20.000000"/>
+          <fillattr colour="White"
+                    pattern="Solid"
+                    filled="false"/>
+          <lineattr colour="Black"
+                    thick="0"
+                    type="Solid"/>
+          <textattr colour="Black"
+                    bold="false"/>
+          <text tool="CPN Tools"
+                version="4.0.0">P_HIGH</text>
+        </priority>
+      </trans>
+      <arc id="ID1415056875"
+           orientation="TtoP"
+           order="2">
+        <posattr x="0.000000"
+                 y="0.000000"/>
+        <fillattr colour="White"
+                  pattern=""
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="1"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <arrowattr headsize="1.200000"
+                   currentcyckle="2"/>
+        <transend idref="ID1415056788"/>
+        <placeend idref="ID1415334672"/>
+        <annot id="ID1415056876">
+          <posattr x="50.000000"
+                   y="100.000000"/>
+          <fillattr colour="White"
+                    pattern="Solid"
+                    filled="false"/>
+          <lineattr colour="Black"
+                    thick="0"
+                    type="Solid"/>
+          <textattr colour="Black"
+                    bold="false"/>
+          <text tool="CPN Tools"
+                version="4.0.0">i+1</text>
+        </annot>
+      </arc>
+      <arc id="ID1415056877"
+           orientation="PtoT"
+           order="1">
+        <posattr x="0.000000"
+                 y="0.000000"/>
+        <fillattr colour="White"
+                  pattern=""
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="1"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <arrowattr headsize="1.200000"
+                   currentcyckle="2"/>
+        <transend idref="ID1415056788"/>
+        <placeend idref="ID1415334672"/>
+        <annot id="ID1415056878">
+          <posattr x="50.000000"
+                   y="35.000000"/>
+          <fillattr colour="White"
+                    pattern="Solid"
+                    filled="false"/>
+          <lineattr colour="Black"
+                    thick="0"
+                    type="Solid"/>
+          <textattr colour="Black"
+                    bold="false"/>
+          <text tool="CPN Tools"
+                version="4.0.0">i</text>
+        </annot>
+      </arc>
+      <arc id="ID1415056871"
+           orientation="BOTHDIR"
+           order="1">
+        <posattr x="0.000000"
+                 y="0.000000"/>
+        <fillattr colour="White"
+                  pattern=""
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="1"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <arrowattr headsize="1.200000"
+                   currentcyckle="2"/>
+        <transend idref="ID1415056788"/>
+        <placeend idref="IDGenInput"/>
+        <annot id="ID1415056872">
+          <posattr x="50.000000"
+                   y="-110.000000"/>
+          <fillattr colour="White"
+                    pattern="Solid"
+                    filled="false"/>
+          <lineattr colour="Black"
+                    thick="0"
+                    type="Solid"/>
+          <textattr colour="Black"
+                    bold="false"/>
+          <text tool="CPN Tools"
+                version="4.0.0">
+(n[vi2'*])</text>
+        </annot>
+      </arc>
+      <arc id="ID1415056873"
+           orientation="TtoP"
+           order="2">
+        <posattr x="0.000000"
+                 y="0.000000"/>
+        <fillattr colour="White"
+                  pattern=""
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="1"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <arrowattr headsize="1.200000"
+                   currentcyckle="2"/>
+        <transend idref="ID1415056788"/>
+        <placeend idref="IDGenInput"/>
+        <annot id="ID1415056874">
+          <posattr x="200.000000"
+                   y="-30.000000"/>
+          <fillattr colour="White"
+                    pattern="Solid"
+                    filled="false"/>
+          <lineattr colour="Black"
+                    thick="0"
+                    type="Solid"/>
+          <textattr colour="Black"
+                    bold="false"/>
+          <text tool="CPN Tools"
+				version="4.0.0">
+(i+1[vi3'*] )@+[round_tistamp](uniform(9.0,51.0))</text>
+        </annot>
+      </arc>
+      <constraints/>
+      <Aux id="IDtextreplic">
+        <posattr x="54.000000"
+                 y="-235.000000"/>
+        <fillattr colour="White"
+                  pattern=""
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="1"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <label/>
+        <text>
+val startTime = Time.now();
+CPN'Replications.nreplications InputQty;
+val endTime = Time.now();
+val iti = Time.toMilliseconds(Time.-(endTime,startTime))</text>
+      </Aux>
+    </page>]
+    with
+		vi1'* := <map(place-inputs-marking)> vi*;
+		vi2'* := <map(arc-gen-input-gen)> vi*;
+		vi3'* := <map(arc-gen-input)> vi*;
+		if (<length> ti*) then round_tistamp :=   "round"
+			else round_tistamp := <Hd> <map(round-tistamp)> ti*
+			end
+
+  round-tistamp: 
+  	[] -> [ $[round] ]
+
+  round-tistamp: 
+  	Timer(TimerDef(VarName(vn),vt,iv)) -> cs
+		where
+			switch !vt
+				case !vt => Integer() :
+  			      cs := $[round]
+				otherwise :
+  			      cs := $[+]
+  			end
+
+  arc-gen-input-gen: 
+  	INVar(VarDef(VarName(vn), vt, ev*, iv)) ->
+  	  $[ , [vn'], [vn] ]
+  	with 
+  		vn' := <concat-strings> ["\n", "p_", vn]
+  				
+  arc-gen-input: 
+  	INVar(VarDef(VarName(vn), vt, ev*, iv)) ->
+  	  $[ , [vn'], [vt'][vt2'] ]
+  	with 
+  		vn' := <concat-strings> ["\n", vn];
+  		vt' := <create-colorset-input> vt;
+  		vt2' := <concat-strings> [".ran()", " " ]
+  				
+  place-inputs-marking: 
+  	INVar(VarDef(vn, vt, ev*, InitialValue(iv))) -> 
+  		$[[im]]
+  	  with 
+  		iv' := <regra1> iv; // <int-to-string> iv;
+  		im := <concat-strings> [", ", iv', ", ", iv']
+
+  place-inputs-marking: 
+  	OUTVar(VarDef(vn, vt, ev*, InitialValue(iv))) -> 
+  		$[[im]]
+  	  with 
+  		iv' := <regra1> iv; // <int-to-string> iv;
+  		im := <concat-strings> [", ", iv', ", ", iv']
