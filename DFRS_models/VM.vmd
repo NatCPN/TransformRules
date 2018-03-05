@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<DFRS> 
+	<InVariable>
+		<VarName>the_coffee_request_button</VarName>
+		<VarType>BOOLEAN</VarType>
+		<ExpectedValue>"false"</ExpectedValue>
+		<ExpectedValue>"true"</ExpectedValue>
+		<InitialValue>"false"</InitialValue>
+	</InVariable>
+	<InVariable>
+		<VarName>the_coin_sensor</VarName>
+		<VarType>BOOLEAN</VarType>
+		<ExpectedValue>"false"</ExpectedValue>
+		<ExpectedValue>"true"</ExpectedValue>
+		<InitialValue>"false"</InitialValue>
+	</InVariable>
+	<OutVariable>
+		<VarName>the_system_mode</VarName>
+		<VarType>ENUM</VarType>
+		<ExpectedValue>"choice"</ExpectedValue>
+		<ExpectedValue>"idle"</ExpectedValue>
+		<ExpectedValue>"preparing_strong_coffee"</ExpectedValue>
+		<ExpectedValue>"preparing_weak_coffee"</ExpectedValue>
+		<InitialValue>"choice"</InitialValue>
+	</OutVariable>
+	<OutVariable>
+		<VarName>the_coffee_machine_output</VarName>
+		<VarType>ENUM</VarType>
+		<ExpectedValue>"strong"</ExpectedValue>
+		<ExpectedValue>"weak"</ExpectedValue>
+		<InitialValue>"strong"</InitialValue>
+	</OutVariable>
+	<Timer> 
+		<VarName>the_request_timer</VarName>
+		<VarType>INTEGER</VarType>
+		<InitialValue>0</InitialValue>
+	</Timer>
+	<GClock>
+		<VarName>gc</VarName>
+		<VarType>INTEGER</VarType>
+		<InitialValue>0</InitialValue>
+	</GClock>
+	<Function>
+		<FuncName>the_coffee_machine_system</FuncName>
+		<FuncTuple>
+			<StaticGuard>"the_system_mode = preparing_weak_coffee"</StaticGuard>
+			<TimedGuard>"gc - the_request_timer <= 30 AND gc - the_request_timer >= 10"</TimedGuard>
+			<Statements>
+				<VarName>the_system_mode</VarName>
+				<Expression>"idle"</Expression>
+			</Statements>
+			<Statements>
+				<VarName>the_coffee_machine_output</VarName>
+				<Expression>"weak"</Expression>
+			</Statements>
+			<ReqTrace>REQ004</ReqTrace>
+		</FuncTuple>
+		<FuncTuple>
+			<StaticGuard>"the_system_mode = preparing_strong_coffee"</StaticGuard>
+			<TimedGuard>"gc - the_request_timer <= 50 AND gc - the_request_timer >= 30"</TimedGuard>
+			<Statements>
+				<VarName>the_system_mode</VarName>
+				<Expression>"idle"</Expression>
+			</Statements>
+			<Statements>
+				<VarName>the_coffee_machine_output</VarName>
+				<Expression>"strong"</Expression>
+			</Statements>
+			<ReqTrace>REQ005</ReqTrace>
+		</FuncTuple>
+	</Function>
+</DFRS>
