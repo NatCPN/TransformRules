@@ -1,0 +1,551 @@
+module cpnDeclarations
+
+imports
+
+	include/VMDFRS
+	src-gen/signatures/VMDFRS-sig
+	trans/generate
+	trans/pgTestCase
+
+rules // Create the Declarations module of a CPN
+	
+  cpn-declarations: 
+  	Dfrs(vi*, vo*, ti*, g, f) -> 
+  	  $[	<globbox>
+					<block id="ID1412310166">
+						<id>Standard priorities</id>
+						<ml id="ID1412310255">val P_HIGH = 100;
+							<layout>val P_HIGH = 100;</layout>
+						</ml>
+						<ml id="ID1412310292">val P_NORMAL = 1000;
+							<layout>val P_NORMAL = 1000;</layout>
+						</ml>
+					    <ml id="ID1412310322">val P_LOW = 10000;
+					      <layout>val P_LOW = 10000;</layout>
+					    </ml>
+				  </block>
+      <block id="ID1">
+        <id>Standard declarations</id>
+        <globref id="ID1415006509">
+          <id>outfile</id>
+          <ml>TextIO.stdOut</ml>
+          <layout>globref outfile = TextIO.stdOut;</layout>
+        </globref>
+        <ml id="ID1415025750">val Head = &quot;TIME;&quot;^[vi5'*]
+[vi8'*]&quot;\n&quot;;
+          <layout>
+val Head = &quot;TIME;&quot;^[vi5'*]
+[vi8'*]&quot;\n&quot;;</layout>
+        </ml>
+        <ml id="ID1415867491">val InputQty = [iqty];
+          <layout>val InputQty = [iqty];</layout>
+        </ml>
+        <color id="ID85042">
+          <id>UNIT</id>
+          <unit/>
+          <layout>colset UNIT = unit;</layout>
+        </color>
+        <color id="ID4">
+          <id>BOOL</id>
+          <bool/>
+        </color>
+        <color id="ID3">
+          <id>INT</id>
+          <int/>
+        </color>
+        <color id="ID1412312409">
+          <id>INTINF</id>
+          <intinf/>
+          <layout>colset INTINF = intinf;</layout>
+        </color>
+        <color id="ID1412312425">
+          <id>TIME</id>
+          <time/>
+          <layout>colset TIME = time;</layout>
+        </color>
+        <color id="ID1412322990">
+          <id>REAL</id>
+          <real/>
+          <layout>colset REAL = real;</layout>
+        </color>
+        <color id="ID5">
+          <id>STRING</id>
+          <string/>
+        </color>
+        <color id="ID1414984454">
+          <id>INTV1</id>
+          <int>
+            <with>
+              <ml>0</ml>
+              <ml>11</ml>
+            </with>
+          </int>
+          <layout>colset INTV1 = int with 0..11;</layout>
+        </color>
+        <color id="IDTBool">
+          <id>TBOOL</id>
+          <timed/>
+          <bool/>
+          <layout>colset TBOOL = bool timed;</layout>
+        </color>
+        <color id="ID1415866749">
+          <id>INPUTCOUNTER</id>
+          <int>
+            <with>
+              <ml>0</ml>
+              <ml>(InputQty+1)</ml>
+            </with>
+          </int>
+          <layout>colset INPUTCOUNTER = int with 0..(InputQty+1);</layout>
+        </color>
+        <var id="ID1415013535">
+          <type>
+            <id>TIME</id>
+          </type>
+          <id>rt</id>
+          <layout>var rt : TIME;</layout>
+        </var>
+        <var id="ID1415601163">
+          <type>
+            <id>INT</id>
+          </type>
+          <id>z</id>
+          <layout>var z : INT;</layout>
+        </var>
+        <var id="ID1415867231">
+          <type>
+            <id>INPUTCOUNTER</id>
+          </type>
+          <id>n</id>
+          <id>i</id>
+          <layout>var n, i : INPUTCOUNTER;</layout>
+        </var>
+          [vi3'*]
+
+        <color id="ID1415866984">
+          <id>INPUTLIM</id>
+          <timed/>
+          <product>
+            <id>INPUTCOUNTER</id>
+			[vi1'*]
+          </product>
+          <layout>colset INPUTLIM = product INPUTCOUNTER [vi2'*] 
+                                           timed;</layout>
+        </color>
+        [vi4'*]
+
+        [vo1'*]
+        [ti'*]
+        <var id="ID1413723254">
+          <type>
+            <id>STRING</id>
+          </type>
+          <id>req</id>
+          <layout>var req: STRING;</layout>
+        </var>
+        <var id="ID1413723255">
+          <type>
+            <id>STRING</id>
+          </type>
+          <id>trace</id>
+          <layout>var trace: STRING;</layout>
+        </var>
+        <color id="ID1414996988">
+          <id>TO</id>
+          <timed/>
+          <product>
+            <id>INT</id>
+            <id>TIME</id>
+			[csto'*]
+			[vo3'*]
+            <id>STRING</id>
+          </product>
+          <layout>colset TO = product INT * TIME  
+                  [vi9'*] [vo4'*] * STRING timed;</layout>
+        </color>
+        <ml id="ID1415056101">fun vector (rt,[vi7'*][vo2'*] req) = (ModelTime.toString rt)^&quot;;&quot;^[vi6'*]
+[vo5'*] req^&quot;\n&quot;;
+          <layout>fun vector (rt,[vi7'*][vo2'*] req) = (ModelTime.toString rt)^&quot;;&quot;^[vi6'*]
+[vo5'*] req^&quot;\n&quot;;
+  		  </layout>
+        </ml>
+
+      </block>
+    </globbox>]
+    with
+		vi1'* := <map(product-inputlim)> vi*;
+		vi2'* := <map(colset-inputlim)> vi*;
+		vi3'* := <map(try(colset-INVar))> vi*;
+		vi4'* := <map(create-cpn-inputs)> vi*;
+		vi5'* := <map(inputs-names-head)> vi*;
+		vi6'* := <map(inputs-names-fun)> vi*;
+		vi7'* := <map(actual-input)> vi*;
+		vi8'* := <map(outputs-names-head)> vo*;
+		vi9'* := <map(colset-to)> vi*;
+		csto'* := <map(product-to)> vi*;
+		vo1'* := <map(create-cpn-outputs)> vo*;
+		vo2'* := <map(funvector-output-list)> vo*;
+		vo3'* := <map(id-output-colset)> vo*;
+		vo4'* := <map(product-output-colset)> vo*;
+		vo5'* := <map(fun-vector-values)> vo*;
+		ti'* := <map(create-cpn-timers)> ti*;
+		vlist := <conc> (vi*, vo*);
+		iqty := <count-cpn-inputs> vlist
+
+  fun-vector-values: 
+  	OUTVar(VarDef(VarName(vn), vt, ev*, iv)) -> cs
+		where
+			switch !vt
+				case !vt => Enum() :
+			  		vt' := <create-colorset-output> vt;
+  					vn' := <concat-strings> ["p_", vn ];
+					ev1' := <map(fun-enum-values)> ev*;
+					ev2' := <concat> [["of "], ev1'];
+					ev3' := <string-troca> ev2';
+					ev4' := <string-replace(|"of |", "of  ")> ev3';
+
+			    cs := $[(case [vn] 
+[ev4'])^&quot;;&quot;^
+]
+				case !vt => Integer() :
+					cs' := <concat-strings> ["\n", "(Int.toString ", vn, ")^&quot;;&quot;^"];
+					cs := $[ [cs'] ]
+				case !vt => Bool() :
+					cs' := <concat-strings> ["\n", "(Bool.toString ", vn, ")^&quot;;&quot;^"];
+					cs := $[ [cs'] ]
+				case !vt => Float() :
+					cs' := <concat-strings> ["\n", "(Real.toString ", vn, ")^&quot;;&quot;^"];
+					cs := $[ [cs'] ]
+			end 
+  				
+  string-troca:
+  	t -> $[[cs]]
+  	    with
+			cs := t
+
+  fun-enum-values:
+  	ExpectedValue(String(t)) -> cs
+  	    with
+			cs1' := <un-double-quote> t;
+  			cs := <concat-strings> ["| ", cs1', " =&gt; &quot;", cs1', " &quot;", " \n"]
+
+  funvector-output-list: 
+  	OUTVar(VarDef(VarName(vn), vt, ev*, iv)) ->
+  	  $[[vn']]
+  	with 
+  		vn' := <concat-strings> [vn, ",", "\n"]
+  				
+  count-cpn-inputs: 
+  	varlist -> 
+  	$[ [ctvi] ]
+  	with 
+  	  lenlist := <length> varlist;
+  	  multvi := <mul> (lenlist, lenlist);
+  	  ctvi := <int-to-string> (multvi)
+  	  
+  outputs-names-head: 
+  	OUTVar(VarDef(VarName(vn), vt, ev*, iv)) ->
+  	  $[[vn']]
+  	with 
+  		vn' := <concat-strings> ["\n", "&quot;O:", vn, ";&quot;^"]
+     
+  outputs-names-fun: 
+  	OUTVar(VarDef(VarName(vn), vt, ev*, iv)) ->
+  	  $[[vn']]
+  	with 
+  		vn' := <concat-strings> ["\n", "(Int.toString ", vn, ")^&quot;;&quot;^"]
+  				
+  inputs-names-head: 
+  	INVar(VarDef(VarName(vn), vt, ev*, iv)) ->
+  	  $[[vn']]
+  	with 
+  		vn' := <concat-strings> ["\n", "&quot;I:", vn, ";&quot;^"]
+     
+  inputs-names-fun: 
+  	INVar(VarDef(VarName(vn), vt, ev*, iv)) -> cs
+		where
+			switch !vt
+				case !vt => Integer() :
+					cs := <concat-strings> ["\n", "(Int.toString ", vn, ")^&quot;;&quot;^"]
+				case !vt => Bool() :
+					cs := <concat-strings> ["\n", "(Bool.toString ", vn, ")^&quot;;&quot;^"]
+				case !vt => Float() :
+					cs := <concat-strings> ["\n", "(Real.toString ", vn, ")^&quot;;&quot;^"]
+				case !vt => Enum() :
+					cs := <concat-strings> ["\n", "(Int.toString ", vn, ")^&quot;;&quot;^"]
+			end 
+
+  create-colorset-input:
+  	vt -> cs
+		where
+			switch !vt
+				case !vt => Integer() :
+			  	  	w1 := 1;
+			  	  	cs := <concat-strings> ["INTV", <int-to-string> (w1) ]
+				case !vt => Bool() :
+					cs := "BOOL"
+				case !vt => Float() :
+					cs := "REAL"
+				case !vt => Enum() :
+					cs := $[ENUM]
+			end 
+
+  create-cpn-inputs: 
+  	INVar(VarDef(VarName(vn), vt, ev*, iv)) ->
+  	  $[ <var id="[vn]">
+           <type>
+             <id>[vt']</id>
+           </type>
+           <id>[vn]</id>
+           <id>[vn']</id>
+           <layout>var [vn], [vn'] : [vt'];</layout>
+         </var>
+         ]
+  	with 
+  		vt' := <create-colorset-input> vt;
+  		vn' := <concat-strings> ["p_", vn ]
+
+  create-output-type:
+  	vt -> cs
+		where
+			switch !vt
+				case !vt => Integer() :
+					cs := $[INT]
+				case !vt => Bool() :
+					cs := $[BOOL]
+				case !vt => Float() :
+					cs := $[REAL]
+				case !vt => Enum() :
+					cs := $[ENUM]
+			end 
+
+  create-colorset-output:
+  	vt -> cs
+		where
+			switch !vt
+				case !vt => Integer() :
+					cs := $[INT]
+				case !vt => Bool() :
+					cs := $[BOOL]
+				case !vt => Float() :
+					cs := $[REAL]
+				case !vt => Enum() :
+					cs := $[ENUM]
+			end 
+
+  create-cpn-timers: 
+  	[] -> $[ ]
+
+  create-cpn-timers: 
+  	Timer(TimerDef(VarName(vn),vt,iv)) -> cs
+		with
+		    cs := $[<var id="[vn]">
+				        <type>
+				          <id>TIME</id>
+				        </type>
+           				<id>[vn]</id>
+           				<layout>var [vn] : TIME;</layout>
+       				</var>
+         			]
+
+  create-cpn-outputs: 
+  	OUTVar(VarDef(VarName(vn), vt, ev*, iv)) -> cs
+		where
+			switch !vt
+				case !vt => Enum() :
+			  		vt' := <create-colorset-output> vt;
+  					uvn' := <upper-case> vn;
+  					pvn' := <concat-strings> ["p_", vn ];
+					ev1' := <map(id-join-enum)> ev*;
+					ev2' := <map(join-enum)> ev*;
+			    cs := $[<color id="ID[vn]">
+				          <id>OCS[uvn']</id>
+				          <timed/>
+				          <enum>
+				            [ev1']
+				          </enum>
+				          <layout>colset OCS[uvn'] = with [ev2'] timed;</layout>
+				        </color>
+						<var id="[vn]">
+					        <type>
+					          <id>OCS[uvn']</id>
+					        </type>
+	           				<id>[vn]</id>
+				            <id>[pvn']</id>
+	           				<layout>var [vn], [pvn'] : OCS[uvn'];</layout>
+         				</var>
+         			]
+				case !vt => Integer() :
+			  		vt' := <create-colorset-output> vt;
+  					vn' := <concat-strings> ["p_", vn ];
+					cs := $[ 
+			        <color id="ID1414984454">
+			          <id>INTV1</id>
+			          <int>
+			            <with>
+			              <ml>0</ml>
+			              <ml>11</ml>
+			            </with>
+			          </int>
+			          <layout>colset INTV1 = int with 0..11;</layout>
+			        </color>
+  	  				<var id="[vn]">
+				        <type>
+				          <id>[vt']</id>
+				        </type>
+           				<id>[vn]</id>
+			            <id>[vn']</id>
+           				<layout>var [vn], [vn'] : [vt'];</layout>
+         				</var>
+         			]
+				case !vt => Bool() :
+			  		vt' := <create-colorset-output> vt;
+  					vn' := <concat-strings> ["p_", vn ];
+					cs := $[ 
+  	  				<var id="[vn]">
+				        <type>
+				          <id>[vt']</id>
+				        </type>
+           				<id>[vn]</id>
+			            <id>[vn']</id>
+           				<layout>var [vn], [vn'] : [vt'];</layout>
+         				</var>
+         			]
+				otherwise :
+			  		vt' := <create-colorset-output> vt;
+  					vn' := <concat-strings> ["p_", vn ];
+					ev1' := <map(join-enum)> ev*;
+					ev2'* := <rtrim-chars(?'|')> ev1';
+  	  				cs := $[ <var id="[vn]">
+				        <type>
+				          <id>[vt']</id>
+				        </type>
+           				<id>[vn]</id>
+			            <id>[vn']</id>
+           				<layout>var [vn], [vn'] : [vt'] [ev2'*];</layout>
+         				</var>
+         			]
+			end 
+
+  create-input-var: 
+  	(INVar(VarDef(VarName(vn), vt, ev*, iv)),cvar) ->
+  	  $[ <var id="[vn]">
+           <type>
+             <id>[vt']</id>
+           </type>
+           <id>[vn]</id>
+           <id>[vn']</id>
+           <layout>var [vn], [vn'] : [vt'];</layout>
+         </var>		]
+  	with 
+  		vt' := <create-colorset-input> [vt,cvar];
+  		vn' := <concat-strings> ["p_", vn ]
+		
+  id-join-enum:
+  	ExpectedValue(String(t)) ->
+  		<concat-strings> ["<id>", cs, "</id> \n"]
+  	    with
+			cs' := <trim-chars(?'"')> t;
+			cs := <trim-chars(?'\')> cs'
+
+  regra1:
+  	t -> cs
+		where
+			switch !t
+				case !t => Int(iv) :
+					cs := iv
+				case !t => Float(iv) :
+					cs := iv
+				case !t => String(iv) :
+					cs' := <trim-chars(?'"')> iv;
+					cs := <trim-chars(?'\')> cs'
+				otherwise :
+					cs := "888"
+			end 
+
+  join-enum: 
+  	ExpectedValue(ev) ->
+  		<concat-strings> [vt', "|"]
+  	  with 
+  		vt' := <regra1> ev;
+  		im := <concat-strings> [vt', "|"]
+
+  id-output-colset: 
+  	OUTVar(VarDef(VarName(vn), vt, ev*, iv)) ->
+  	  $[[vn']]
+  	with 
+		uvn' := <upper-case> vn;
+		switch !vt
+			case !vt => Integer() :
+		  		vn' := <concat-strings> ["\n", "<id>INT</id>"]
+			case !vt => Bool() :
+		  		vn' := <concat-strings> ["\n", "<id>TBOOL</id>"]
+			case !vt => Float() :
+		  		vn' := <concat-strings> ["\n", "<id>REAL</id>"]
+			otherwise :
+		  		vn' := <concat-strings> ["\n", "<id>OCS", uvn', "</id>"]
+		end 
+     
+  product-output-colset: 
+  	OUTVar(VarDef(VarName(vn), vt, ev*, iv)) ->
+  	  $[[vn']]
+  	with 
+		uvn' := <upper-case> vn;
+		switch !vt
+			case !vt => Integer() :
+		  		vn' := "* INT "
+			case !vt => Bool() :
+		  		vn' := "* BOOL "
+			case !vt => Float() :
+		  		vn' := "* REAL "
+			otherwise :
+		  		vn' := <concat-strings> ["* OCS", uvn']
+		end 
+     
+  product-inputlim: 
+  	INVar(VarDef(vn, vt, ev*, iv)) ->
+  		<concat-strings> ["<id>", <try(create-colorset-input)> vt, "</id> \n",
+  	"<id>", <try(create-colorset-input)> vt, "</id> \n"]
+  		where not(<try(create-colorset-input)> vt => " Enum ")
+
+  product-to: 
+  	INVar(VarDef(vn, vt, ev*, iv)) ->
+  		<concat-strings> ["<id>", <try(create-colorset-input)> vt, "</id> \n"]
+  		where not(<try(create-colorset-input)> vt => " Enum ")
+
+  colset-inputlim:
+  	INVar(VarDef(vn, vt, ev*, iv)) -> 
+  		<concat-strings> ["*", <try(create-colorset-input)> vt, "*", <try(create-colorset-input)> vt]
+  		where not(<try(create-colorset-input)> vt => " Enum ")
+
+  colset-to:
+  	INVar(VarDef(vn, vt, ev*, iv)) -> 
+  		<concat-strings> ["*", <try(create-colorset-input)> vt]
+  		where not(<try(create-colorset-input)> vt => " Enum ")
+
+  colset-INVar: 
+	  	INVar(VarDef(vn, vt, ev*, iv)) ->
+  		  	$[ [vt'] ] 
+  	with 
+  		vt' := <try(colset-enum-INVar)> vt
+
+  colset-enum-INVar:
+  	Integer() -> $[  ]
+
+  colset-enum-INVar:
+  	Bool() -> $[  ]
+
+  colset-enum-INVar:
+  	Float() -> $[  ]
+
+  colset-enum-INVar:
+  	Enum() -> $[
+        <color id="ID1413755779">
+  	          <id>PRESSURE</id>
+          <enum>
+            <id>high</id>
+            <id>low</id>
+            <id>permitted</id>
+          </enum>
+          <layout>colset PRESSURE = with high | low | permitted;</layout>
+        </color>   	]
