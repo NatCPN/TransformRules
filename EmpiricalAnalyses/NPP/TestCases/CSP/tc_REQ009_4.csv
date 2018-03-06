@@ -1,0 +1,6 @@
+TIME;the_reset_button;the_blockage_button;the_water_pressure;the_safety_injection_mode;the_overridden_mode;the_pressure_mode
+0.0;false;false;0;1;false;1
+1.0;true;false;0;1;false;1
+2.0;false;true;0;0;true;1
+
+
