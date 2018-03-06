@@ -1,0 +1,7 @@
+TIME;the_voltage;the_turn_indicator_lever;the_emergency_flashing;the_indication_lights;the_flashing_mode
+0;79;0;0;2;2
+1;80;0;1;2;0
+2;79;2;1;2;3
+3;79;0;1;2;0
+
+
